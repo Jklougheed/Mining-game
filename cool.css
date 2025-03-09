@@ -1,0 +1,372 @@
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.game-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+}
+
+.resources {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.resource {
+  background-color: #f8f8f8;
+  padding: 8px 15px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.mining-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  margin: 30px 0;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.mine {
+  transition: transform 0.1s;
+}
+
+.mine img {
+  width: 100px;
+  height: 100px;
+  user-select: none;
+}
+
+.mine:active {
+  transform: scale(0.95);
+}
+
+.upgrades {
+  margin-top: 30px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.upgrades h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #444;
+  font-size: 1.5em;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.upgrade-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+button {
+  background-color: #4a8fe7;
+  color: white;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  text-align: center;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+button:hover {
+  background-color: #3a7fd7;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+button:hover:before {
+  left: 100%;
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+button:disabled:before {
+  display: none;
+}
+
+.description {
+  font-size: 14px;
+  margin-top: 7px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.prestige-section {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f5e9ff;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2d1ef;
+}
+
+#prestige-button {
+  background-color: #8e44ad;
+  background-image: linear-gradient(135deg, #9b59b6, #8e44ad);
+  margin-bottom: 15px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px;
+}
+
+#prestige-button:hover {
+  background-image: linear-gradient(135deg, #a667c2, #9b59b6);
+}
+
+#training-upgrade {
+  background-color: #4a8fe7;
+  background-image: linear-gradient(135deg, #5dade2, #4a8fe7);
+}
+
+#training-upgrade:hover {
+  background-image: linear-gradient(135deg, #70beff, #5dade2);
+}
+
+#tools-upgrade {
+  background-color: #4a8fe7;
+  background-image: linear-gradient(135deg, #5dade2, #4a8fe7);
+}
+
+#tools-upgrade:hover {
+  background-image: linear-gradient(135deg, #70beff, #5dade2);
+}
+
+#automation-upgrade {
+  background-color: #4a8fe7;
+  background-image: linear-gradient(135deg, #5dade2, #4a8fe7);
+}
+
+#automation-upgrade:hover {
+  background-image: linear-gradient(135deg, #70beff, #5dade2);
+}
+
+.upgrade-wrapper {
+  animation: fadeIn 0.5s;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.02);
+  padding: 3px;
+  transition: all 0.3s ease;
+}
+
+.upgrade-wrapper:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.prestige-info {
+  color: #8e44ad;
+  font-weight: bold;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.gold-popup {
+  position: absolute;
+  color: gold;
+  font-weight: bold;
+  text-shadow: 0 0 3px black;
+  pointer-events: none;
+  animation: pop 0.8s forwards;
+}
+
+.gold-popup.critical {
+  color: #ff5252;
+  font-size: 1.5em;
+  text-shadow: 0 0 4px black;
+}
+
+.critical-popup {
+  position: absolute;
+  color: #ff5252;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 0 0 5px black;
+  pointer-events: none;
+  animation: flash 0.8s forwards;
+  z-index: 10;
+}
+
+.auto-collect-popup {
+  position: absolute;
+  color: #56ff89;
+  font-weight: bold;
+  text-shadow: 0 0 3px black;
+  pointer-events: none;
+  animation: pop 0.8s forwards;
+}
+
+.boost-effect {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  z-index: 100;
+  animation: fadeIn 0.3s;
+}
+
+#combo-display {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffdd59;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: none;
+}
+
+#speed-boost {
+  background-color: #4a8fe7;
+  background-image: linear-gradient(135deg, #5dade2, #4a8fe7);
+}
+
+#speed-boost:hover {
+  background-image: linear-gradient(135deg, #70beff, #5dade2);
+}
+
+#auto-tapper {
+  background-color: #4a8fe7;
+  background-image: linear-gradient(135deg, #5dade2, #4a8fe7);
+}
+
+#auto-tapper:hover {
+  background-image: linear-gradient(135deg, #70beff, #5dade2);
+}
+
+#gold-magnet {
+  background-color: #4a8fe7;
+  background-image: linear-gradient(135deg, #5dade2, #4a8fe7);
+}
+
+#gold-magnet:hover {
+  background-image: linear-gradient(135deg, #70beff, #5dade2);
+}
+
+#crit-upgrade {
+  background-color: #4a8fe7;
+  background-image: linear-gradient(135deg, #5dade2, #4a8fe7);
+}
+
+#crit-upgrade:hover {
+  background-image: linear-gradient(135deg, #70beff, #5dade2);
+}
+
+#combo-upgrade {
+  background-color: #4a8fe7;
+  background-image: linear-gradient(135deg, #5dade2, #4a8fe7);
+}
+
+#combo-upgrade:hover {
+  background-image: linear-gradient(135deg, #70beff, #5dade2);
+}
+
+#auto-collect-upgrade {
+  background-color: #4a8fe7;
+  background-image: linear-gradient(135deg, #5dade2, #4a8fe7);
+}
+
+#auto-collect-upgrade:hover {
+  background-image: linear-gradient(135deg, #70beff, #5dade2);
+}
+
+#crit-bonus-upgrade {
+  background-color: #4a8fe7;
+  background-image: linear-gradient(135deg, #5dade2, #4a8fe7);
+}
+
+#crit-bonus-upgrade:hover {
+  background-image: linear-gradient(135deg, #70beff, #5dade2);
+}
+
+@keyframes flash {
+  0% { transform: scale(1.5); opacity: 1; }
+  50% { transform: scale(2); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  .upgrade-buttons {
+    grid-template-columns: 1fr;
+  }
+  
+  .resources {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
