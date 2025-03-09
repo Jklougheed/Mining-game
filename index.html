@@ -1,6 +1,181 @@
+
+<!DOCTYPE html>
 <html>
-  <body>
-    <h1>This is a Heading</h1>
-    <p>This is a paragraph.</p>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2442313510888252"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9925181477419122"
+     crossorigin="anonymous"></script>
+  <!-- name -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-9925181477419122"
+     data-ad-slot="3263112689"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <div class="game-container">
+    <div class="header">
+      <h1>Resource Miner</h1>
+      <div class="resources">
+        <div class="resource">
+          <span id="gold-display">0</span> Gold
+        </div>
+        <div class="resource">
+          <span id="workers-display">0</span> Workers
+        </div>
+      </div>
+    </div>
+    
+    <div class="mining-area" id="mining-area">
+      <div class="mine">
+        <img src="https://cdn-icons-png.flaticon.com/512/10139/10139721.png" alt="Mine" id="mine-img">
+      </div>
+    </div>
+    
+    <div class="upgrades">
+      <h2>Upgrades</h2>
+      <div class="upgrade-buttons">
+        <button id="pickaxe-upgrade">
+          Upgrade Pickaxe (<span id="pickaxe-cost">10</span> gold)
+          <div class="description">Current Level: <span id="pickaxe-level">1</span></div>
+        </button>
+        
+        <button id="hire-worker">
+          Hire Worker (<span id="worker-cost">50</span> gold)
+          <div class="description">Each worker mines <span id="worker-power">0.1</span> gold/sec</div>
+        </button>
+        
+        <button id="speed-upgrade">
+          Upgrade Mining Speed (<span id="speed-cost">25</span> gold)
+          <div class="description">Current Speed: <span id="speed-level">1</span></div>
+        </button>
+      </div>
+      
+      <h2>Worker Upgrades</h2>
+      <div class="upgrade-buttons" id="worker-upgrades">
+        <!-- These buttons will be added dynamically when unlocked -->
+        <div class="upgrade-wrapper" style="display:none">
+          <button id="training-upgrade">
+            Worker Training (<span id="training-cost">500</span> gold)
+            <div class="description">Level: <span id="training-level">0</span> (+0.1 gold/sec per worker)</div>
+          </button>
+        </div>
+        
+        <div class="upgrade-wrapper" style="display:none">
+          <button id="tools-upgrade">
+            Better Tools (<span id="tools-cost">2000</span> gold)
+            <div class="description">Level: <span id="tools-level">0</span> (+0.2 gold/sec per worker)</div>
+          </button>
+        </div>
+        
+        <div class="upgrade-wrapper" style="display:none">
+          <button id="automation-upgrade">
+            Mining Automation (<span id="automation-cost">10000</span> gold)
+            <div class="description">Level: <span id="automation-level">0</span> (+0.5 gold/sec per worker)</div>
+
+      <h2>Special Upgrades</h2>
+      <div class="upgrade-buttons">
+        <div class="upgrade-wrapper" style="display:none">
+          <button id="crit-upgrade">
+            Critical Hits (<span id="crit-cost">150</span> gold)
+            <div class="description">Level: <span id="crit-level">0</span> (Chance for 2x gold)</div>
+          </button>
+        </div>
+        
+        <div class="upgrade-wrapper" style="display:none">
+          <button id="combo-upgrade">
+            Combo System (<span id="combo-cost">200</span> gold)
+            <div class="description">Level: <span id="combo-level">0</span> (Tap rhythm multiplier)</div>
+          </button>
+        </div>
+      </div>
+      
+      <h2>Temporary Boosts</h2>
+      <div class="upgrade-buttons">
+        <div class="upgrade-wrapper" style="display:none">
+          <button id="speed-boost">
+            Speed Boost (300 gold)
+            <div class="description">2x mining speed for 10 seconds</div>
+          </button>
+        </div>
+        
+        <div class="upgrade-wrapper" style="display:none">
+          <button id="auto-tapper">
+            Auto-Tapper (400 gold)
+            <div class="description">Automatically mines 3 times per second for 15 seconds</div>
+          </button>
+        </div>
+        
+        <div class="upgrade-wrapper" style="display:none">
+          <button id="gold-magnet">
+            Gold Magnet (350 gold)
+            <div class="description">Increases gold gained by 50% for 20 seconds</div>
+          </button>
+        </div>
+      </div>
+      
+      <h2>Passive Bonuses</h2>
+      <div class="upgrade-buttons">
+        <div class="upgrade-wrapper" style="display:none">
+          <button id="auto-collect-upgrade">
+            Auto-Collect (<span id="auto-collect-cost">750</span> gold)
+            <div class="description">Level: <span id="auto-collect-level">0</span> (Chance to collect extra gold)</div>
+          </button>
+        </div>
+        
+        <div class="upgrade-wrapper" style="display:none">
+          <button id="crit-bonus-upgrade">
+            Critical Chance (<span id="crit-bonus-cost">600</span> gold)
+            <div class="description">Level: <span id="crit-bonus-level">0</span> (Bonus critical hit chance)</div>
+          </button>
+        </div>
+      </div>
+
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="prestige-section">
+      <button id="prestige-button" disabled>
+        Prestige (Requires <span id="prestige-requirement">1000</span> gold)
+        <div class="description">Reset progress for permanent multipliers!</div>
+      </button>
+      <div class="prestige-info">
+        Prestige Level: <span id="prestige-level">0</span> (Bonus: <span id="prestige-bonus">0</span>%)
+      </div>
+    </div>
+    
+    <div class="leaderboard-section">
+      <h2>Leaderboard</h2>
+      <div class="leaderboard-controls">
+        <input type="text" id="player-name" placeholder="Enter your name" maxlength="20">
+        <button id="save-score">Save Score</button>
+      </div>
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Total Gold</th>
+            <th>Prestige Level</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+          <!-- Leaderboard entries will be added here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
 </html>
